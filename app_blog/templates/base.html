@@ -1,0 +1,23 @@
+<!--templates/base.html-->
+
+<html>
+    <head>
+        <title>Django Blog</title>
+    </head>
+    <body>
+        <header>
+            {% if user.is_authenticated %}
+                <p>Hola {{ user.username}}!</p>
+                <p><a href ="{%url 'logout'%}">Logout</a></p>
+            {% else %}
+                <p>Usuario no ha iniciado sesión.</p>
+                <a href="{% url 'login'%}">Login</a>
+                <a href="{% url 'singup'%}">Sing Up</a>
+            {% endif %}
+            <h1><a href="{% url 'home' %}">Django Blog</a></h1>
+        </header>
+        <div>
+            {%block content%}
+            {%endblock content%}
+        </div>
+</html>
